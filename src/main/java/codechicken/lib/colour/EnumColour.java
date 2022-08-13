@@ -4,6 +4,7 @@ import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.ImmutableTable;
 import com.google.common.collect.Table;
 import net.minecraft.client.resources.language.I18n;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.StringRepresentable;
@@ -191,7 +192,7 @@ public enum EnumColour implements StringRepresentable {
     }
 
     public static EnumColour fromDyeStack(ItemStack stack) {
-        return ForgeRegistries.ITEMS.getHolder(stack.getItem())
+        return Registry.ITEM.getHolder(stack.getItem())
                 .flatMap(e -> e.getTagKeys()
                         .map(TagKey::location)
                         .map(dyeTagLookup::get)
@@ -202,7 +203,7 @@ public enum EnumColour implements StringRepresentable {
     }
 
     public static EnumColour fromWoolStack(ItemStack stack) {
-        return ForgeRegistries.ITEMS.getHolder(stack.getItem())
+        return Registry.ITEM.getHolder(stack.getItem())
                 .flatMap(e -> e.getTagKeys()
                         .map(TagKey::location)
                         .map(woolTagLookup::get)
