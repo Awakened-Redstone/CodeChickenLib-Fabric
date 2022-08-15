@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "codechickenlib",
+  "version": "${version}",
+  "name": "CodeChicken Lib",
+  "description": "CodeChickenLib is a library of systems to help make various aspects of minecraft modding easier.\nIt contains libraries for 3D math and transformations, model rendering, packets, config, colours, asm and a few other things..",
+  "authors": [
+    "ChickenBones",
+    "covers1624",
+    "Awakened Redstone",
+    "Waterpicker"
+  ],
+  "license": "LGPL-2.1",
+  "icon": "assets/codechickenlib/icon.png",
+  "environment": "*",
+  "accessWidener": "codechickenlib.accesswidener",
+  "entrypoints": {
+    "main": [
+      "codechicken.lib.CodeChickenLib"
+    ]
+  },
+  "mixins": [
+    "codechickenlib.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14",
+    "fabric-api": ">=0.58.6",
+    "minecraft": ">=1.19"
+  },
+  "custom": {
+    "modmenu": {
+      "badges": [
+        "library"
+      ]
+    }
+  }
+}
