@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.Registry;
 
 import static codechicken.lib.util.LambdaUtils.tryOrNull;
 import static net.minecraft.commands.Commands.argument;
@@ -121,11 +121,11 @@ public class HighlightCommand {
         StringBuilder builder = new StringBuilder("\nBlock info:\n");
         builder.append("  BlockPos:      ").append(String.format("x:%s, y:%s, z:%s", pos.getX(), pos.getY(), pos.getZ())).append("\n");
         builder.append("  Block Class:   ").append(tryOrNull(() -> block.getClass())).append("\n");
-        builder.append("  Registry Name: ").append(tryOrNull(() -> ForgeRegistries.BLOCKS.getKey(block))).append("\n");
+        builder.append("  Registry Name: ").append(tryOrNull(() -> Registry.BLOCK.getKey(block))).append("\n");
         builder.append("  State:         ").append(state).append("\n");
         builder.append("Tile at position\n");
         builder.append("  Tile Class:    ").append(tryOrNull(() -> tile.getClass())).append("\n");
-        builder.append("  Tile Id:       ").append(tryOrNull(() -> ForgeRegistries.BLOCK_ENTITY_TYPES.getKey(tile.getType()))).append("\n");
+        builder.append("  Tile Id:       ").append(tryOrNull(() -> Registry.BLOCK_ENTITY_TYPE.getKey(tile.getType()))).append("\n");
         builder.append("  Tile NBT:      ").append(tryOrNull(() -> tile.saveWithoutMetadata())).append("\n");
         source.sendSuccess(Component.literal(builder.toString()), false);
 

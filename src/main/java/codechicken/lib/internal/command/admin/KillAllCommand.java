@@ -6,14 +6,13 @@ import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.covers1624.quack.collection.StreamableIterable;
 import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerChunkCache;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.monster.Enemy;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -94,7 +93,7 @@ public class KillAllCommand {
         int total = 0;
         for (EntityType<?> t : order) {
             int count = counts.getInt(t);
-            String name = ForgeRegistries.ENTITY_TYPES.getKey(t).toString();
+            String name = Registry.ENTITY_TYPE.getKey(t).toString();
             ctx.getSource().sendSuccess(Component.translatable("ccl.commands.killall.success.line", RED + name + RESET + " x " + AQUA + count), false);
             total += count;
         }

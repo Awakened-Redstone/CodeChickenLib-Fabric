@@ -27,7 +27,7 @@ import net.minecraftforge.client.ChunkRenderTypeSet;
 import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.Registry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -64,7 +64,7 @@ public class ModelBakery {
 
     public static final IBlockStateKeyGenerator defaultBlockKeyGenerator = (state, data) -> state.toString();
 
-    public static final IItemStackKeyGenerator defaultItemKeyGenerator = stack -> ForgeRegistries.ITEMS.getKey(stack.getItem()).toString() + "|" + stack.getDamageValue();
+    public static final IItemStackKeyGenerator defaultItemKeyGenerator = stack -> Registry.ITEM.getKey(stack.getItem()).toString() + "|" + stack.getDamageValue();
 
     public static void init() {
         ResourceUtils.registerReloadListener(e -> nukeModelCache());
@@ -98,7 +98,7 @@ public class ModelBakery {
 
     public static void registerItemKeyGenerator(Item item, IItemStackKeyGenerator generator) {
         if (itemKeyGeneratorMap.containsKey(item)) {
-            throw new IllegalArgumentException("Unable to register IItemStackKeyGenerator as one is already registered for item: " + ForgeRegistries.ITEMS.getKey(item));
+            throw new IllegalArgumentException("Unable to register IItemStackKeyGenerator as one is already registered for item: " + Registry.ITEM.getKey(item));
         }
         itemKeyGeneratorMap.put(item, generator);
     }

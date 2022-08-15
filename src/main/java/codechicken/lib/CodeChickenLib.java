@@ -22,7 +22,6 @@ import java.nio.file.Paths;
  */
 @Mod (CodeChickenLib.MOD_ID)
 public class CodeChickenLib {
-
     public static final String MOD_ID = "codechickenlib";
 
     public static ConfigCategory config;

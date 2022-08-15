@@ -8,6 +8,7 @@ import io.netty.buffer.Unpooled;
 import io.netty.handler.codec.EncoderException;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtAccounter;
@@ -610,7 +611,7 @@ public interface MCDataInput {
         if (!readBoolean()) {
             return ItemStack.EMPTY;
         } else {
-            Item item = readRegistryIdDirect(ForgeRegistries.ITEMS);
+            Item item = readRegistryIdDirect(Registry.ITEM);
             int count = readVarInt();
             ItemStack stack = new ItemStack(item, count);
             stack.readShareTag(readCompoundNBT());

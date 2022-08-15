@@ -27,7 +27,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.Registry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -156,7 +156,7 @@ public abstract class LootTableProvider implements DataProvider {
         }
 
         protected void register(Block block, LootTable.Builder builder) {
-            register(ForgeRegistries.BLOCKS.getKey(block), builder);
+            register(Registry.BLOCK.getKey(block), builder);
         }
 
         protected void register(ResourceLocation name, LootTable.Builder builder) {

@@ -1,6 +1,7 @@
 package codechicken.lib.datagen.recipe;
 
 import com.google.gson.JsonObject;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -8,7 +9,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -41,7 +41,7 @@ public class FurnaceRecipeBuilder extends AbstractItemStackRecipeBuilder<Furnace
     }
 
     public static FurnaceRecipeBuilder smelting(ItemStack result) {
-        return smelting(result, ForgeRegistries.ITEMS.getKey(result.getItem()));
+        return smelting(result, Registry.ITEM.getKey(result.getItem()));
     }
 
     public static FurnaceRecipeBuilder smelting(ItemStack result, ResourceLocation id) {
@@ -64,7 +64,7 @@ public class FurnaceRecipeBuilder extends AbstractItemStackRecipeBuilder<Furnace
     }
 
     public static FurnaceRecipeBuilder blasting(ItemStack result) {
-        return blasting(result, ForgeRegistries.ITEMS.getKey(result.getItem()));
+        return blasting(result, Registry.ITEM.getKey(result.getItem()));
     }
 
     public static FurnaceRecipeBuilder blasting(ItemStack result, ResourceLocation id) {
@@ -87,7 +87,7 @@ public class FurnaceRecipeBuilder extends AbstractItemStackRecipeBuilder<Furnace
     }
 
     public static FurnaceRecipeBuilder smoking(ItemStack result) {
-        return smoking(result, ForgeRegistries.ITEMS.getKey(result.getItem()));
+        return smoking(result, Registry.ITEM.getKey(result.getItem()));
     }
 
     public static FurnaceRecipeBuilder smoking(ItemStack result, ResourceLocation id) {
@@ -110,7 +110,7 @@ public class FurnaceRecipeBuilder extends AbstractItemStackRecipeBuilder<Furnace
     }
 
     public static FurnaceRecipeBuilder campfire(ItemStack result) {
-        return campfire(result, ForgeRegistries.ITEMS.getKey(result.getItem()));
+        return campfire(result, Registry.ITEM.getKey(result.getItem()));
     }
 
     public static FurnaceRecipeBuilder campfire(ItemStack result, ResourceLocation id) {
@@ -133,7 +133,7 @@ public class FurnaceRecipeBuilder extends AbstractItemStackRecipeBuilder<Furnace
     }
 
     public static FurnaceRecipeBuilder custom(RecipeSerializer<?> serializer, ItemStack result) {
-        return custom(serializer, result, ForgeRegistries.ITEMS.getKey(result.getItem()));
+        return custom(serializer, result, Registry.ITEM.getKey(result.getItem()));
     }
 
     public static FurnaceRecipeBuilder custom(RecipeSerializer<?> serializer, ItemStack result, ResourceLocation id) {

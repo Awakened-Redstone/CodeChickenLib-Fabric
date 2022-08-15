@@ -1,10 +1,10 @@
 package codechicken.lib.datagen.recipe;
 
 import com.google.gson.JsonObject;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraftforge.registries.ForgeRegistries;
 
 /**
  * Created by covers1624 on 28/12/20.
@@ -30,7 +30,7 @@ public abstract class AbstractItemStackRecipeBuilder<T extends AbstractRecipeBui
             super.serializeRecipeData(json);
             JsonObject result = new JsonObject();
             ItemStack resultStack = AbstractItemStackRecipeBuilder.this.result;
-            result.addProperty("item", ForgeRegistries.ITEMS.getKey(resultStack.getItem()).toString());
+            result.addProperty("item", Registry.ITEM.getKey(resultStack.getItem()).toString());
             if (resultStack.getCount() > 1) {
                 result.addProperty("count", resultStack.getCount());
             }

@@ -5,11 +5,11 @@ import com.mojang.brigadier.context.CommandContext;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerChunkCache;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -64,7 +64,7 @@ public class CountCommand {
         int total = 0;
         for (EntityType<?> type : order) {
             int count = counts.getInt(type);
-            String name = ForgeRegistries.ENTITY_TYPES.getKey(type).toString();
+            String name = Registry.ENTITY_TYPE.getKey(type).toString();
             ctx.getSource().sendSuccess(Component.literal(GREEN + name + RESET + " x " + AQUA + count), false);
             total += count;
         }

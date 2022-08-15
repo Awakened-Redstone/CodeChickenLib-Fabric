@@ -7,6 +7,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.handler.codec.EncoderException;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtIo;
@@ -883,7 +884,7 @@ public interface MCDataOutput {
         } else {
             writeBoolean(true);
             Item item = stack.getItem();
-            writeRegistryIdDirect(ForgeRegistries.ITEMS, item);
+            writeRegistryIdDirect(Registry.ITEM, item);
             writeVarInt(stack.getCount());
             CompoundTag nbt = null;
             if (item.canBeDepleted() || item.shouldOverrideMultiplayerNbt()) {
