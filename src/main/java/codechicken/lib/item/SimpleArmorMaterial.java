@@ -99,7 +99,7 @@ public class SimpleArmorMaterial implements ArmorMaterial {
 
         public Builder durabilityFactor(int factor) {
             for (int i = 0; i < 4; i++) {
-                durability[i] = ArmorMaterials.HEALTH_PER_SLOT[i] * factor;
+                durability[i] = ArmorMaterials.HEALTH_PER_SLOT[i] * factor; //TODO: Figure out value.
             }
             return this;
         }

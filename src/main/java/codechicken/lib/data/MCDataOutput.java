@@ -3,6 +3,7 @@ package codechicken.lib.data;
 import codechicken.lib.vec.Cuboid6;
 import codechicken.lib.vec.Vector3;
 import com.mojang.math.Vector3f;
+import io.github.fabricators_of_create.porting_lib.util.FluidStack;
 import io.netty.buffer.ByteBuf;
 import io.netty.handler.codec.EncoderException;
 import net.minecraft.core.BlockPos;
@@ -16,10 +17,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.ForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistry;
 
 import java.io.DataOutput;
 import java.io.DataOutputStream;
@@ -906,8 +903,8 @@ public interface MCDataOutput {
             writeBoolean(false);
         } else {
             writeBoolean(true);
-            writeRegistryIdDirect(ForgeRegistries.FLUIDS, stack.getFluid());
-            writeVarInt(stack.getAmount());
+            writeRegistryIdDirect(Registry.FLUID, stack.getFluid());
+            writeLong(stack.getAmount());
             writeCompoundNBT(stack.getTag());
         }
         return this;
@@ -932,9 +929,9 @@ public interface MCDataOutput {
      * @param entry    The object to write to the stream.
      * @return The same stream.
      */
-    default <T> MCDataOutput writeRegistryIdDirect(IForgeRegistry<T> registry, T entry) {
-        ForgeRegistry<T> r = unsafeCast(Objects.requireNonNull(registry));
-        writeVarInt(r.getID(entry));
+    default <T> MCDataOutput writeRegistryIdDirect(Registry<T> registry, T entry) {
+        Registry<T> r = unsafeCast(Objects.requireNonNull(registry));
+        writeVarInt(r.getId(entry));
         return this;
     }
 
@@ -947,9 +944,9 @@ public interface MCDataOutput {
      * @param entry    The name of the registry object to write.
      * @return The same stream.
      */
-    default <T> MCDataOutput writeRegistryIdDirect(IForgeRegistry<T> registry, ResourceLocation entry) {
-        ForgeRegistry<T> r = unsafeCast(Objects.requireNonNull(registry));
-        writeVarInt(r.getID(entry));
+    default <T> MCDataOutput writeRegistryIdDirect(Registry<T> registry, ResourceLocation entry) {
+        Registry<T> r = unsafeCast(Objects.requireNonNull(registry));
+        writeVarInt(r.getId(registry.get(entry))); //TODO: This might explode.
         return this;
     }
 
@@ -961,9 +958,9 @@ public interface MCDataOutput {
      * @param entry    The object to write to the stream.
      * @return The same stream.
      */
-    default <T> MCDataOutput writeRegistryId(IForgeRegistry<T> registry, T entry) {
-        ResourceLocation rName = registry.getRegistryName();
-        if (!registry.containsValue(entry)) {
+    default <T> MCDataOutput writeRegistryId(Registry<T> registry, T entry) {
+        ResourceLocation rName = Registry.REGISTRY.getKey(registry));
+        if (registry.getResourceKey(entry).isEmpty()) {
             throw new IllegalArgumentException(format("Registry '{0}' does not contain entry '{1}'", rName, entry));
         }
         writeResourceLocation(rName);
@@ -979,8 +976,8 @@ public interface MCDataOutput {
      * @param entry    The name of the registry object to write.
      * @return The same stream.
      */
-    default <T> MCDataOutput writeRegistryId(IForgeRegistry<T> registry, ResourceLocation entry) {
-        ResourceLocation rName = registry.getRegistryName();
+    default <T> MCDataOutput writeRegistryId(Registry<T> registry, ResourceLocation entry) {
+        ResourceLocation rName = Registry.REGISTRY.getKey(registry);
         if (!registry.containsKey(entry)) {
             throw new IllegalArgumentException(format("Registry '{0}' does not contain entry '{1}'", rName, entry));
         }
