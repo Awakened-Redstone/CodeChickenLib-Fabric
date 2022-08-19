@@ -1,1 +1,51 @@
 accessWidener v1 named
+
+# Methods
+accessible method net/minecraft/world/phys/BlockHitResult <init> (ZLnet/minecraft/world/phys/Vec3;Lnet/minecraft/core/Direction;Lnet/minecraft/core/BlockPos;Z)V
+accessible method net/minecraft/tags/BlockTags create (Ljava/lang/String;)Lnet/minecraft/tags/TagKey;
+accessible method com/mojang/blaze3d/shaders/Program <init> (Lcom/mojang/blaze3d/shaders/Program$Type;ILjava/lang/String;)V
+accessible method com/mojang/blaze3d/shaders/Program$Type getGlType ()I
+
+# Fields
+accessible field net/minecraft/core/Direction BY_3D_DATA [Lnet/minecraft/core/Direction;
+accessible field com/mojang/blaze3d/vertex/BufferBuilder format Lcom/mojang/blaze3d/vertex/VertexFormat;
+accessible field com/mojang/blaze3d/vertex/DefaultedVertexConsumer defaultColorSet Z
+# TextureAtlasSprite
+accessible field net/minecraft/client/renderer/texture/TextureAtlasSprite mainImage [Lcom/mojang/blaze3d/platform/NativeImage;
+accessible field net/minecraft/client/renderer/texture/TextureAtlasSprite x I
+accessible field net/minecraft/client/renderer/texture/TextureAtlasSprite y I
+accessible field net/minecraft/client/renderer/texture/TextureAtlasSprite u0 F
+accessible field net/minecraft/client/renderer/texture/TextureAtlasSprite u1 F
+accessible field net/minecraft/client/renderer/texture/TextureAtlasSprite v0 F
+accessible field net/minecraft/client/renderer/texture/TextureAtlasSprite v1 F
+mutable field net/minecraft/client/renderer/texture/TextureAtlasSprite u0 F
+mutable field net/minecraft/client/renderer/texture/TextureAtlasSprite u1 F
+mutable field net/minecraft/client/renderer/texture/TextureAtlasSprite v0 F
+mutable field net/minecraft/client/renderer/texture/TextureAtlasSprite v1 F
+# Matrix3f
+accessible field com/mojang/math/Matrix3f m00 F
+accessible field com/mojang/math/Matrix3f m10 F
+accessible field com/mojang/math/Matrix3f m20 F
+accessible field com/mojang/math/Matrix3f m01 F
+accessible field com/mojang/math/Matrix3f m11 F
+accessible field com/mojang/math/Matrix3f m21 F
+accessible field com/mojang/math/Matrix3f m02 F
+accessible field com/mojang/math/Matrix3f m12 F
+accessible field com/mojang/math/Matrix3f m22 F
+# Matrix4f
+accessible field com/mojang/math/Matrix4f m00 F
+accessible field com/mojang/math/Matrix4f m10 F
+accessible field com/mojang/math/Matrix4f m20 F
+accessible field com/mojang/math/Matrix4f m30 F
+accessible field com/mojang/math/Matrix4f m01 F
+accessible field com/mojang/math/Matrix4f m11 F
+accessible field com/mojang/math/Matrix4f m21 F
+accessible field com/mojang/math/Matrix4f m31 F
+accessible field com/mojang/math/Matrix4f m02 F
+accessible field com/mojang/math/Matrix4f m12 F
+accessible field com/mojang/math/Matrix4f m22 F
+accessible field com/mojang/math/Matrix4f m32 F
+accessible field com/mojang/math/Matrix4f m03 F
+accessible field com/mojang/math/Matrix4f m13 F
+accessible field com/mojang/math/Matrix4f m23 F
+accessible field com/mojang/math/Matrix4f m33 F
