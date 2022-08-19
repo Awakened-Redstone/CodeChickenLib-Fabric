@@ -18,6 +18,7 @@ import codechicken.lib.vec.Vector3;
 import codechicken.lib.vec.Vertex5;
 import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.vertex.*;
+import io.github.fabricators_of_create.porting_lib.util.FluidStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -27,7 +28,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
-import net.minecraftforge.fluids.FluidStack;
 
 /**
  * The core of the CodeChickenLib render system.

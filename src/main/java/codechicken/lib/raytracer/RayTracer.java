@@ -1,7 +1,8 @@
 package codechicken.lib.raytracer;
 
 import codechicken.lib.vec.Vector3;
-import net.covers1624.quack.annotation.ReplaceWith;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -14,9 +15,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.ForgeMod;
 
 public class RayTracer {
 
@@ -41,11 +39,13 @@ public class RayTracer {
         return baseTraceResult;
     }
 
+    //TODO: Implement a proper way to work with the various custom range implementation from mods
     private static double getBlockReachDistance_server(ServerPlayer player) {
-        return player.getAttribute(ForgeMod.REACH_DISTANCE.get()).getValue();
+        //return player.getAttribute(ForgeMod.REACH_DISTANCE.get()).getValue();
+        return 5; //Temporary replacement while there isn't a global way to customize player reach
     }
 
-    @OnlyIn (Dist.CLIENT)
+    @Environment(EnvType.CLIENT)
     private static double getBlockReachDistance_client() {
         return Minecraft.getInstance().gameMode.getPickRange();
     }
