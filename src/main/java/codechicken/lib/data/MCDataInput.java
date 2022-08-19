@@ -3,13 +3,11 @@ package codechicken.lib.data;
 import codechicken.lib.vec.Cuboid6;
 import codechicken.lib.vec.Vector3;
 import com.mojang.math.Vector3f;
+import io.github.fabricators_of_create.porting_lib.util.FluidStack;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.handler.codec.EncoderException;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
-import net.minecraft.core.Vec3i;
+import net.minecraft.core.*;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtAccounter;
 import net.minecraft.nbt.NbtIo;
@@ -21,11 +19,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.ForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.RegistryManager;
 
 import javax.annotation.Nullable;
 import java.io.DataInput;
@@ -628,8 +621,8 @@ public interface MCDataInput {
         if (!readBoolean()) {
             return FluidStack.EMPTY;
         } else {
-            Fluid fluid = readRegistryIdDirect(ForgeRegistries.FLUIDS);
-            int amount = readVarInt();
+            Fluid fluid = readRegistryIdDirect(Registry.FLUID);
+            long amount = readVarLong();
             CompoundTag tag = readCompoundNBT();
             if (fluid == Fluids.EMPTY) {
                 return FluidStack.EMPTY;
@@ -650,26 +643,26 @@ public interface MCDataInput {
     /**
      * Reads a registry object from the stream.
      *
-     * @param registry The {@link IForgeRegistry} to load the entry from.
+     * @param registry The {@link Registry} to load the entry from.
      * @return The registry object..
-     * @see MCDataOutput#writeRegistryIdDirect(IForgeRegistry, Object)
-     * @see MCDataOutput#writeRegistryIdDirect(IForgeRegistry, ResourceLocation)
+     * @see MCDataOutput#writeRegistryIdDirect(Registry, Object)
+     * @see MCDataOutput#writeRegistryIdDirect(Registry, ResourceLocation)
      */
-    default <T> T readRegistryIdDirect(IForgeRegistry<T> registry) {
-        ForgeRegistry<T> _registry = unsafeCast(registry);
-        return _registry.getValue(readVarInt());
+    default <T> T readRegistryIdDirect(Registry<T> registry) {
+        Registry<T> _registry = unsafeCast(registry);
+        return (T) _registry.getHolder(readVarInt()).map(Holder::value).orElse(null); //TODO: Should be exception or holder?
     }
 
     /**
      * Reads a registry object from the stream.
      *
      * @return The registry object.
-     * @see MCDataOutput#writeRegistryId(IForgeRegistry, Object)
-     * @see MCDataOutput#writeRegistryId(IForgeRegistry, ResourceLocation)
+     * @see MCDataOutput#writeRegistryId(Registry, Object)
+     * @see MCDataOutput#writeRegistryId(Registry, ResourceLocation)
      */
     default <T> T readRegistryId() {
         ResourceLocation rName = readResourceLocation();
-        ForgeRegistry<T> registry = RegistryManager.ACTIVE.getRegistry(rName);
+        Registry<T> registry = (Registry<T>) Registry.REGISTRY.get(rName);
         return readRegistryIdDirect(registry);
     }
     //endregion

@@ -33,7 +33,7 @@ public class CCShaderInstance extends ShaderInstance {
     private final List<Runnable> applyCallbacks = new LinkedList<>();
 
     protected CCShaderInstance(ResourceProvider resourceProvider, ResourceLocation loc, VertexFormat format) throws IOException {
-        super(resourceProvider, loc, format);
+        super(resourceProvider, loc, format); //TODO: Figure out mixin dark magic needed to make the string fed here work
     }
 
     public static CCShaderInstance create(ResourceProvider resourceProvider, ResourceLocation loc, VertexFormat format) {
@@ -69,7 +69,7 @@ public class CCShaderInstance extends ShaderInstance {
         return (CCUniform) super.getUniform(name);
     }
 
-    @Override
+    @Override //TODO: Weird method name or forge method?
     protected void parseUniformNode(JsonElement json) throws ChainedJsonException {
         JsonObject obj = GsonHelper.convertToJsonObject(json, "uniform");
         String name = GsonHelper.getAsString(obj, "name");
