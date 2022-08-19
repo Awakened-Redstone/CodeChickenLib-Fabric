@@ -326,11 +326,11 @@ dependencies {
 
     // The One Probe
     modImplementation("mcjty.theoneprobe:theoneprobe-fabric:${top_version}")
-//    compileOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:${top_version}:api")
-//    runtimeOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:${top_version}")
+    //compileOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:${top_version}:api")
+    //runtimeOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:${top_version}")
 
     // Nicephore - Screenshots and Stuff
-//    modRuntimeOnly("curse.maven:nicephore-fabric-405990:3848375")
+    //modRuntimeOnly("curse.maven:nicephore-fabric-405990:3848375")
 
     // Shut up Experimental Settings - so we don't have to deal with that CONSTANTLY
     modRuntimeOnly("curse.maven:fabric-disable-custom-worlds-advice-401978:3827588")

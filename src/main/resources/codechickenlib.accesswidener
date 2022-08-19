@@ -10,6 +10,7 @@ accessible method com/mojang/blaze3d/shaders/Program$Type getGlType ()I
 accessible field net/minecraft/core/Direction BY_3D_DATA [Lnet/minecraft/core/Direction;
 accessible field com/mojang/blaze3d/vertex/BufferBuilder format Lcom/mojang/blaze3d/vertex/VertexFormat;
 accessible field com/mojang/blaze3d/vertex/DefaultedVertexConsumer defaultColorSet Z
+accessible field net/minecraft/world/item/ArmorMaterials HEALTH_PER_SLOT [I
 # TextureAtlasSprite
 accessible field net/minecraft/client/renderer/texture/TextureAtlasSprite mainImage [Lcom/mojang/blaze3d/platform/NativeImage;
 accessible field net/minecraft/client/renderer/texture/TextureAtlasSprite x I
