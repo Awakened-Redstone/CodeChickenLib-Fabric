@@ -1,3 +1,7 @@
+[Gist with classes used by Draconic Evolution and Brandons Core that need to be ported](https://gist.github.com/Awakened-Redstone/585db8afd247be59daa848990f42bc71)
+
+Check the original project here: [https://github.com/TheCBProject/CodeChickenLib](https://github.com/TheCBProject/CodeChickenLib)
+
 CodeChickenLib
 ==============
 [![](http://cf.way2muchnoise.eu/short_codechicken-lib-1-8_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/codechicken-lib-1-8)
