@@ -226,8 +226,8 @@ public class InventoryUtils {
     public static void consumeItem(Container inv, int slot) {
         ItemStack stack = inv.getItem(slot);
         Item item = stack.getItem();
-        if (item.hasCraftingRemainingItem()) { //TODO: Figure out analog
-            ItemStack container = new ItemStack(item.getCraftingRemainingItem());
+        if (item.hasCraftingRemainingItem()) { //From original source: TODO: Figure out analog
+            ItemStack container = item.getCraftingRemainingItem().getDefaultInstance();
             inv.setItem(slot, container);
         } else {
             inv.removeItem(slot, 1);

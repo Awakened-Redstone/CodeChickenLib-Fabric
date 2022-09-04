@@ -1,6 +1,7 @@
 package codechicken.lib.raytracer;
 
 import codechicken.lib.vec.Vector3;
+import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.Minecraft;
@@ -39,10 +40,8 @@ public class RayTracer {
         return baseTraceResult;
     }
 
-    //TODO: Implement a proper way to work with the various custom range implementation from mods
     private static double getBlockReachDistance_server(ServerPlayer player) {
-        //return player.getAttribute(ForgeMod.REACH_DISTANCE.get()).getValue();
-        return 5; //Temporary replacement while there isn't a global way to customize player reach
+        return player.getAttribute(ReachEntityAttributes.REACH).getValue();
     }
 
     @Environment(EnvType.CLIENT)

@@ -11,6 +11,7 @@ import java.util.function.Supplier;
  * <p>
  * Created by covers1624 on 7/11/2016.
  */
+//TODO: Remove this bc ItemGroups are a thing
 public class SimpleCreativeTab extends CreativeModeTab {
 
     private final Supplier<ItemStack> stackSupplier;
