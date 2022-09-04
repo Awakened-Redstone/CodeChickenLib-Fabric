@@ -1,4 +1,5 @@
-[Gist with classes used by Draconic Evolution and Brandons Core that need to be ported](https://gist.github.com/Awakened-Redstone/585db8afd247be59daa848990f42bc71)
+[Gist with classes used by Draconic Evolution and Brandons Core that need to be ported (may be incomplete/wrong)](https://gist.github.com/Awakened-Redstone/585db8afd247be59daa848990f42bc71)
+[Gist of classes found that need to be ported (may be incomplete/wrong)](https://gist.github.com/Awakened-Redstone/cb0edd2610b819fe11d90be6662bae3b)
 
 Check the original project here: [https://github.com/TheCBProject/CodeChickenLib](https://github.com/TheCBProject/CodeChickenLib)
 
